@@ -1,42 +1,52 @@
 package nl.knaake.erik;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class ArrayListTest {
+    private ErikArrayList<String> list;
+
+    @Before
+    public void before() {
+        list = new ErikArrayList<>();
+    }
+
     @Test
     public void addShouldIncreaseSize() {
-        ErikArrayList<String> list = new ErikArrayList<>();
         list.add("a");
-        assertEquals(list.size(), 1);
+        assertEquals(1, list.size());
     }
 
     @Test
     public void shouldAddAndGetItem() {
-        ErikArrayList<String> list = new ErikArrayList<>(12);
         list.add("a");
-        assertEquals(list.get(0), "a");
+        assertEquals("a", list.get(0));
     }
 
     @Test
     public void shouldSetItem() {
-        ErikArrayList<String> list = new ErikArrayList<>(12);
         list.add("a");
         list.add("b");
         list.add("c");
-        list.set("d", 1);
-        assertEquals(list.get(1), "d");
+        list.set(1, "d");
+        assertEquals("d", list.get(1));
     }
 
     @Test
     public void shouldClearArray() {
-        ErikArrayList<String> list = new ErikArrayList<>(12);
         list.add("a");
         list.add("b");
         list.add("c");
         list.clear();
-        assertEquals(list.size(), 0);
-        assertEquals(list.get(0), null);
+        assertEquals(0, list.size());
+        assertNull(list.get(0));
+    }
+
+    @Test
+    public void getShouldReturnNullWhenEmpty() {
+        assertNull(list.get(0));
     }
 }

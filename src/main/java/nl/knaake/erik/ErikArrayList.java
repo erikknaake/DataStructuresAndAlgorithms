@@ -55,7 +55,7 @@ public class ErikArrayList<T> {
         return array[index];
     }
 
-    public void set(T item, int index) {
+    public void set(int index, T item) {
         array[index] = item;
     }
 
