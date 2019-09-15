@@ -62,4 +62,16 @@ public class ErikArrayList<T> {
     public int size() {
         return size;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("ArrayList:\n");
+        if(size == 0) {
+            result.append("Empty\n");
+            return result.toString();
+        }
+        for(int i = 0; i < size; i++)
+            result.append("\t").append(i).append(": ").append(array[i]).append("\n");
+        return result.toString();
+    }
 }

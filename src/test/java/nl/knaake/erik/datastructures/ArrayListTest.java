@@ -50,4 +50,17 @@ public class ArrayListTest {
     public void getShouldReturnNullWhenEmpty() {
         assertNull(list.get(0));
     }
+
+    @Test
+    public void toStringTest() {
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        assertEquals("ArrayList:\n\t0: a\n\t1: b\n\t2: c\n", list.toString());
+    }
+
+    @Test
+    public void toStringTestEmpty() {
+        assertEquals("ArrayList:\nEmpty\n", list.toString());
+    }
 }

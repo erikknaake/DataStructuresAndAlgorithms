@@ -25,4 +25,11 @@ public class HANStack<T> {
     public void push(T item) {
         stack.addFirst(item);
     }
+
+    @Override
+    public String toString() {
+        String result = "Stack:\n\t";
+        result += stack.toString();
+        return result;
+    }
 }

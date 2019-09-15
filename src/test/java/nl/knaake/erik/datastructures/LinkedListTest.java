@@ -88,4 +88,17 @@ public class LinkedListTest {
         list.addFirst("Hello3");
         assertEquals(9, list.size());
     }
+
+    @Test
+    public void toStringTest() {
+        list.addFirst("c");
+        list.addFirst("b");
+        list.addFirst("a");
+        assertEquals("LinkedList:\n\t0: a\n\t1: b\n\t2: c\n", list.toString());
+    }
+
+    @Test
+    public void toStringTestEmpty() {
+        assertEquals("LinkedList:\nEmpty\n", list.toString());
+    }
 }

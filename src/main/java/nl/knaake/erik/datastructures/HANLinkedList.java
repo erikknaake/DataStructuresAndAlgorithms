@@ -69,4 +69,21 @@ public class HANLinkedList<T> {
         }
         return i;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("LinkedList:\n");
+        if(size() == 0) {
+            result.append("Empty\n");
+            return result.toString();
+        }
+        ListNode node = header;
+        int i = 0;
+        while(node.next != null) {
+            node = node.next;
+            result.append("\t").append(i).append(": ").append(node.value).append("\n");
+            i++;
+        }
+        return result.toString();
+    }
 }

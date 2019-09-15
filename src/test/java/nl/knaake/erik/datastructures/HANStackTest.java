@@ -65,4 +65,17 @@ public class HANStackTest {
     public void popEmptyStackShouldReturnNull() {
         assertNull(stack.pop());
     }
+
+    @Test
+    public void toStringTest() {
+        stack.push("c");
+        stack.push("b");
+        stack.push("a");
+        assertEquals("Stack:\n\tLinkedList:\n\t0: a\n\t1: b\n\t2: c\n", stack.toString());
+    }
+
+    @Test
+    public void toStringTestEmpty() {
+        assertEquals("Stack:\n\tLinkedList:\nEmpty\n", stack.toString());
+    }
 }
