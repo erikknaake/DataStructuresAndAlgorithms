@@ -1,4 +1,4 @@
-package nl.knaake.erik;
+package nl.knaake.erik.datastructures;
 
 import java.util.List;
 

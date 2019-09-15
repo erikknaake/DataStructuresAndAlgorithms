@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="nl.knaake.erik.LinkedListTest" time="0.001" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="nl.knaake.erik.LinkedListTest" time="0.006" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk/lib"/>
-    <property name="sun.java.command" value="/mnt/808AA1748AA166FE/dev/java/Datastructures/target/surefire/surefirebooter6865766438872960318.jar /mnt/808AA1748AA166FE/dev/java/Datastructures/target/surefire 2019-09-15T12-42-12_125-jvmRun1 surefire12334121794974350926tmp surefire_06517346357730382172tmp"/>
+    <property name="sun.java.command" value="/mnt/808AA1748AA166FE/dev/java/Datastructures/target/surefire/surefirebooter9718888879304539864.jar /mnt/808AA1748AA166FE/dev/java/Datastructures/target/surefire 2019-09-15T14-01-09_673-jvmRun1 surefire12563902936758219840tmp surefire_06284795509502405222tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/mnt/808AA1748AA166FE/dev/java/Datastructures/target/test-classes:/mnt/808AA1748AA166FE/dev/java/Datastructures/target/classes:/home/erikknaake/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/erikknaake/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/mnt/808AA1748AA166FE/dev/java/Datastructures/target/surefire/surefirebooter6865766438872960318.jar"/>
+    <property name="surefire.real.class.path" value="/mnt/808AA1748AA166FE/dev/java/Datastructures/target/surefire/surefirebooter9718888879304539864.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.4+11"/>
     <property name="user.name" value="erikknaake"/>
@@ -60,7 +60,7 @@
   <testcase name="insertAtStart" classname="nl.knaake.erik.LinkedListTest" time="0"/>
   <testcase name="insert" classname="nl.knaake.erik.LinkedListTest" time="0"/>
   <testcase name="removeFirst" classname="nl.knaake.erik.LinkedListTest" time="0"/>
-  <testcase name="insertAtEnd" classname="nl.knaake.erik.LinkedListTest" time="0"/>
+  <testcase name="insertAtEnd" classname="nl.knaake.erik.LinkedListTest" time="0.004"/>
   <testcase name="size" classname="nl.knaake.erik.LinkedListTest" time="0"/>
   <testcase name="size0" classname="nl.knaake.erik.LinkedListTest" time="0"/>
   <testcase name="size1" classname="nl.knaake.erik.LinkedListTest" time="0"/>

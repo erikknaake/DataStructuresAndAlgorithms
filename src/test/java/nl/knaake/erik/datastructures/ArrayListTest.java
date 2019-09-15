@@ -1,5 +1,6 @@
-package nl.knaake.erik;
+package nl.knaake.erik.datastructures;
 
+import nl.knaake.erik.datastructures.ErikArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
