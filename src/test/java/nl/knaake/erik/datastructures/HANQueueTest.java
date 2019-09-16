@@ -76,6 +76,18 @@ public class HANQueueTest {
     }
 
     @Test
+    public void overflow() {
+        for(int i = 0; i < 16; i++)
+            queue.enqueue("Hello" + i);
+        queue.enqueue("HelloEn1");
+        queue.enqueue("HelloEn2");
+        for(int i = 0; i < 16; i++)
+            assertEquals("Hello" + i, queue.dequeue());
+        assertEquals("HelloEn1", queue.dequeue());
+        assertEquals("HelloEn2", queue.dequeue());
+    }
+
+    @Test
     public void overflowAfterDequeue() {
         for(int i = 0; i < 15; i++)
             queue.enqueue("Hello" + i);

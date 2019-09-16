@@ -85,6 +85,12 @@ public class LinkedListTest {
     }
 
     @Test
+    public void sizeAfterInsert() {
+        list.insert(0, "Hello");
+        assertEquals(1, list.size());
+    }
+
+    @Test
     public void clear() {
         list.addFirst("Hello");
         list.addFirst("Hello2");

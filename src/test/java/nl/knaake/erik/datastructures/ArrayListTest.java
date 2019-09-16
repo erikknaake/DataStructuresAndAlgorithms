@@ -32,6 +32,8 @@ public class ArrayListTest {
         for(int i = 0; i < 17; i++)
             list.add("a" + i);
         assertEquals(17, list.size());
+        assertEquals("a16", list.get(16));
+        assertEquals("a0", list.get(0));
     }
 
     @Test
