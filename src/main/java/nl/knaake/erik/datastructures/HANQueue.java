@@ -55,8 +55,9 @@ public class HANQueue<T> {
 
     private void doubleQueue() {
         T[] newQueue = makeNewArray(queue.length * 2);
-        for(int i = 0; i < size; i++, front = increment(front))
-            newQueue[i] = queue[front];
+        System.arraycopy(queue, 0, newQueue, 0, queue.length);
+        for(int i = 0; i < size; i++)
+            front = increment(front);
         queue = newQueue;
         front = 0;
         back = size - 1;

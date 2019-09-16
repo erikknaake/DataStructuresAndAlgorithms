@@ -29,8 +29,7 @@ public class ErikArrayList<T> {
         {
             T[] old = array;
             array = createArray(array.length * 2);
-            for(int i = 0; i < old.length; i++)
-                array[i] = old[i];
+            System.arraycopy(old, 0, array, 0, old.length);
         }
         array[size++] = item;
     }
