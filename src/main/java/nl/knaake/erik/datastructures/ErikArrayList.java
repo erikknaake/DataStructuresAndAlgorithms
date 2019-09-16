@@ -11,22 +11,6 @@ public class ErikArrayList<T> {
         clear(DEFAULT_INITIAL_CAPACITY);
     }
 
-    public ErikArrayList(int initialSize) {
-        clear(initialSize);
-    }
-
-    public ErikArrayList(Collection<? extends T> other) {
-        clear(DEFAULT_INITIAL_CAPACITY);
-        for(T obj: other)
-            add(obj);
-    }
-
-    public ErikArrayList(Collection<? extends T> other, int initialSize) {
-        clear(initialSize);
-        for(T obj: other)
-            add(obj);
-    }
-
     public void clear() {
         clear(DEFAULT_INITIAL_CAPACITY);
     }

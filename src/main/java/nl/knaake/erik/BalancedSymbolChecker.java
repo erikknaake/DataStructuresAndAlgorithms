@@ -39,11 +39,14 @@ public class BalancedSymbolChecker {
     }
 
     private Character correspondingSymbol(char symbol) {
+        Character result = null;
         for(MatchingSymbols a : matchingSymbols) {
-            if(a.closing == symbol)
-                return a.opening;
+            if(a.closing == symbol) {
+                result = a.opening;
+                break;
+            }
         }
-        return null;
+        return result;
     }
 
     private boolean isClosingBracket(char symbol) {

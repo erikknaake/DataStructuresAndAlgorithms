@@ -4,8 +4,7 @@ import nl.knaake.erik.datastructures.HANLinkedList;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class LinkedListTest {
     private HANLinkedList<String> list;
@@ -66,6 +65,16 @@ public class LinkedListTest {
         assertEquals(1, list.size());
     }
 
+    @Test
+    public void isEmpty() {
+        list.addFirst("Hello");
+        assertFalse(list.isEmpty());
+    }
+
+    @Test
+    public void notEmpty() {
+        assertTrue(list.isEmpty());
+    }
 
     @Test
     public void size() {
@@ -73,6 +82,24 @@ public class LinkedListTest {
         list.addFirst("Hello2");
         list.addFirst("Hello3");
         assertEquals(3, list.size());
+    }
+
+    @Test
+    public void clear() {
+        list.addFirst("Hello");
+        list.addFirst("Hello2");
+        list.clear();
+        assertEquals(0, list.size());
+        assertEquals(null, list.get(0));
+    }
+
+    @Test
+    public void sizeAfterDelete() {
+        list.addFirst("Hello");
+        list.addFirst("Hello2");
+        list.addFirst("Hello3");
+        list.delete(2);
+        assertEquals(2, list.size());
     }
 
     @Test

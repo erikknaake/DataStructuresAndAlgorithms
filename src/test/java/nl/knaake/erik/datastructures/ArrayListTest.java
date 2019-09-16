@@ -28,6 +28,13 @@ public class ArrayListTest {
     }
 
     @Test
+    public void shouldAddAndGrow() {
+        for(int i = 0; i < 17; i++)
+            list.add("a" + i);
+        assertEquals(17, list.size());
+    }
+
+    @Test
     public void shouldSetItem() {
         list.add("a");
         list.add("b");

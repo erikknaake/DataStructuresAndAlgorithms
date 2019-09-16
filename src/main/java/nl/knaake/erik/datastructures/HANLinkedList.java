@@ -1,7 +1,5 @@
 package nl.knaake.erik.datastructures;
 
-import java.util.List;
-
 public class HANLinkedList<T> {
     class ListNode {
         ListNode next;
@@ -16,15 +14,18 @@ public class HANLinkedList<T> {
         }
     }
 
+    private int size;
     private ListNode header = new ListNode(null);
 
     public void addFirst(T item) {
         header.next = new ListNode(item, header.next);
+        size++;
     }
 
     public void removeFirst() {
         if(header.next != null) {
             header.next = header.next.next;
+            size--;
         }
     }
 
@@ -45,15 +46,18 @@ public class HANLinkedList<T> {
     public void insert(int index, T item) {
         ListNode foundNode = findNode(index - 1);
         foundNode.next = new ListNode(item, foundNode.next);
+        size++;
     }
 
     public void delete(int index) {
         ListNode nodeBeforeDelete = findNode(index - 1);
         nodeBeforeDelete.next = nodeBeforeDelete.next.next;
+        size--;
     }
 
     public void clear() {
         header.next = null; // GC does the rest
+        size = 0;
     }
 
     public boolean isEmpty() {
@@ -61,13 +65,7 @@ public class HANLinkedList<T> {
     }
 
     public int size() {
-        int i = 0;
-        ListNode node = header;
-        while(node.next != null) {
-            node = node.next;
-            i++;
-        }
-        return i;
+        return size;
     }
 
     @Override
