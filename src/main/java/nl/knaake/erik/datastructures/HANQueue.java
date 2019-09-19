@@ -1,5 +1,7 @@
 package nl.knaake.erik.datastructures;
 
+import java.util.Arrays;
+
 public class HANQueue<T> {
     private T[] queue;
     private int size;
@@ -67,5 +69,15 @@ public class HANQueue<T> {
         if(++x == queue.length)
             x = 0;
         return x;
+    }
+
+    @Override
+    public String toString() {
+        return "HANQueue{" +
+                "queue=" + Arrays.toString(queue) +
+                ", size=" + size +
+                ", front=" + front +
+                ", back=" + back +
+                '}';
     }
 }

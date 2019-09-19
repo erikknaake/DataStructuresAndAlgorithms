@@ -1,21 +1,9 @@
 package nl.knaake.erik.datastructures;
 
+// Note when making this in a final version the listnode should be an inner class and an iterator should be exposed.
 public class HANLinkedList<T> {
-    class ListNode {
-        ListNode next;
-        T value;
-
-        ListNode(T value) {
-            this.value = value;
-        }
-        ListNode(T value, ListNode next) {
-            this.value = value;
-            this.next = next;
-        }
-    }
-
     private int size;
-    private ListNode header = new ListNode(null);
+    private ListNode<T> header = new ListNode(null);
 
     public void addFirst(T item) {
         header.next = new ListNode(item, header.next);
@@ -29,7 +17,7 @@ public class HANLinkedList<T> {
         }
     }
 
-    private ListNode findNode(int index) {
+    public ListNode<T> findNode(int index) {
         ListNode foundNode = header;
         for (int i = 0; i <= index; i++) {
             if(foundNode.next != null)
@@ -38,9 +26,10 @@ public class HANLinkedList<T> {
         return foundNode;
     }
 
+
     public T get(int index) {
         ListNode result = findNode(index);
-        return result == null ? null : result.value;
+        return result == null ? null : (T)result.value;
     }
 
     public void insert(int index, T item) {

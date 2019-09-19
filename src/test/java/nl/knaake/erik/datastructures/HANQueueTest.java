@@ -99,4 +99,19 @@ public class HANQueueTest {
         assertEquals("HelloEn1", queue.dequeue());
         assertEquals("HelloEn2", queue.dequeue());
     }
+
+    @Test
+    public void toStringTest() {
+        queue.enqueue("hello");
+        queue.enqueue("hello2");
+        assertEquals("HANQueue{queue=[hello, hello2, null, null, null, null, null, null, null, null, null, null, null, null, null, null], size=2, front=0, back=1}", queue.toString());
+    }
+
+    @Test
+    public void toStringWithDequeueTest() {
+        queue.enqueue("hello");
+        queue.enqueue("hello2");
+        queue.dequeue();
+        assertEquals("HANQueue{queue=[hello, hello2, null, null, null, null, null, null, null, null, null, null, null, null, null, null], size=1, front=1, back=1}", queue.toString());
+    }
 }
