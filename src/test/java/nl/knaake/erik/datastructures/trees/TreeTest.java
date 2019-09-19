@@ -131,7 +131,6 @@ public class TreeTest {
         assertEquals(3, tree.numberOfLeaves());
     }
 
-
     @Test
     public void treeNumberOfNodesOneLevelOfChild() {
         tree.root.addChild("Hello");

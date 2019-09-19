@@ -1,4 +1,4 @@
-package nl.knaake.erik.datastructures.trees;
+package nl.knaake.erik.datastructures.trees.binary;
 
 /**
  * Not encapsulated with getters and setters since that will cause too much overhead (in creating stackframes)
@@ -26,5 +26,12 @@ public class BinaryTree<T> {
 
     public int numberOfNodes() {
         return root.numberOfNodes();
+    }
+
+    @Override
+    public String toString() {
+        return "BinaryTree{" +
+                "root=" + root +
+                '}';
     }
 }

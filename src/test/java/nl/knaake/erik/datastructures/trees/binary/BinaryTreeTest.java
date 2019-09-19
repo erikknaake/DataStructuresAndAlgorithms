@@ -1,5 +1,7 @@
-package nl.knaake.erik.datastructures.trees;
+package nl.knaake.erik.datastructures.trees.binary;
 
+import nl.knaake.erik.datastructures.trees.binary.BinaryTree;
+import nl.knaake.erik.datastructures.trees.binary.BinaryTreeNode;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -98,5 +100,10 @@ public class BinaryTreeTest {
         tree.root.left.setLeft("Hello3");
         tree.root.left.setRight("Hello4");
         assertEquals(5, tree.numberOfNodes()); // Count the root as well
+    }
+
+    @Test
+    public void toStringTest() {
+        assertEquals("BinaryTree{root=BinaryTreeNode{value=null, left=null, right=null}}", tree.toString());
     }
 }

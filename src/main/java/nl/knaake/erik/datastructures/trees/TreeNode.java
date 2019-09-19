@@ -48,16 +48,13 @@ public class TreeNode<T> {
     }
 
     public int numberOfLeaves() {
-        return numberOfLeaves(0);
-    }
-
-    private int numberOfLeaves(int currentNumber) {
+        int currentNumber = 0;
         if(firstChild != null)
-            currentNumber = firstChild.numberOfLeaves(currentNumber);
+            currentNumber += firstChild.numberOfLeaves();
         else
             currentNumber++;
         if(nextSibling != null)
-            currentNumber = nextSibling.numberOfLeaves(currentNumber);
+            currentNumber += nextSibling.numberOfLeaves();
         return currentNumber;
     }
 
