@@ -114,4 +114,38 @@ public class TreeTest {
     public void toStringTest() {
         assertEquals("Tree{root=TreeNode{nextSibling=null, firstChild=null}}", tree.toString());
     }
+
+    @Test
+    public void treeNumberOfLeavesOneLevelOfChild() {
+        tree.root.addChild("Hello");
+        tree.root.addChild("Hello2");
+        assertEquals(2, tree.numberOfLeaves());
+    }
+
+    @Test
+    public void treeNumberOfLeavesMultiLevelOfChild() {
+        tree.root.addChild("Hello");
+        tree.root.addChild("Hello2");
+        tree.root.firstChild.addChild("Hello3");
+        tree.root.firstChild.addChild("Hello4");
+        assertEquals(3, tree.numberOfLeaves());
+    }
+
+
+    @Test
+    public void treeNumberOfNodesOneLevelOfChild() {
+        tree.root.addChild("Hello");
+        tree.root.addChild("Hello2");
+        assertEquals(3, tree.numberOfNodes()); // Count the root as well
+    }
+
+    @Test
+    public void treeNumberOfNodesMultiLevelOfChild() {
+        tree.root.addChild("Hello");
+        tree.root.addChild("Hello2");
+        tree.root.firstChild.addChild("Hello3");
+        tree.root.firstChild.addChild("Hello4");
+        assertEquals(5, tree.numberOfNodes()); // Count the root as well
+    }
+
 }

@@ -47,6 +47,29 @@ public class TreeNode<T> {
             nextSibling = nextSibling.nextSibling;
     }
 
+    public int numberOfLeaves() {
+        return numberOfLeaves(0);
+    }
+
+    private int numberOfLeaves(int currentNumber) {
+        if(firstChild != null)
+            currentNumber = firstChild.numberOfLeaves(currentNumber);
+        else
+            currentNumber++;
+        if(nextSibling != null)
+            currentNumber = nextSibling.numberOfLeaves(currentNumber);
+        return currentNumber;
+    }
+
+    public int numberOfNodes() {
+        int currentNumber = 1;
+        if(firstChild != null)
+            currentNumber += firstChild.numberOfNodes();
+        if(nextSibling != null)
+            currentNumber += nextSibling.numberOfNodes();
+        return currentNumber;
+    }
+
     @Override
     public String toString() {
         return "TreeNode{nextSibling=" + nextSibling + ", firstChild=" + firstChild + "}";

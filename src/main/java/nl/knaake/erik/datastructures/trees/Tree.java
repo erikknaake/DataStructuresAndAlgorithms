@@ -24,4 +24,13 @@ public class Tree<T> {
     public Tree(TreeNode<T> root) {
         this.root = root;
     }
+
+    public int numberOfLeaves() {
+        return root.numberOfLeaves();
+    }
+
+    public int numberOfNodes() {
+        return root.numberOfNodes();
+    }
+
 }

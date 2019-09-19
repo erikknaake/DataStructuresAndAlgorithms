@@ -66,4 +66,37 @@ public class BinaryTreeTest {
         node.setRight("Right");
         assertEquals("Right", node.right.value);
     }
+
+    @Test
+    public void treeNumberOfLeavesOneLevelOfChild() {
+        tree.root.setLeft("Hello");
+        tree.root.setRight("Hello2");
+        assertEquals(2, tree.numberOfLeaves());
+    }
+
+    @Test
+    public void treeNumberOfLeavesMultiLevelOfChild() {
+        tree.root.setLeft("Hello");
+        tree.root.setRight("Hello2");
+        tree.root.left.setLeft("Hello3");
+        tree.root.left.setRight("Hello4");
+        assertEquals(3, tree.numberOfLeaves());
+    }
+
+
+    @Test
+    public void treeNumberOfNodesOneLevelOfChild() {
+        tree.root.setLeft("Hello");
+        tree.root.setRight("Hello2");
+        assertEquals(3, tree.numberOfNodes()); // Count the root as well
+    }
+
+    @Test
+    public void treeNumberOfNodesMultiLevelOfChild() {
+        tree.root.setLeft("Hello");
+        tree.root.setRight("Hello2");
+        tree.root.left.setLeft("Hello3");
+        tree.root.left.setRight("Hello4");
+        assertEquals(5, tree.numberOfNodes()); // Count the root as well
+    }
 }

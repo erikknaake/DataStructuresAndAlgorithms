@@ -42,4 +42,23 @@ public class BinaryTreeNode<T> {
         setRight(new BinaryTreeNode<>(right));
     }
 
+    public int numberOfLeaves() {
+        int currentNumber = 0;
+        if(left != null)
+            currentNumber += left.numberOfLeaves();
+        if(right != null)
+            currentNumber += right.numberOfLeaves();
+        if(left == null && right == null)
+            currentNumber++;
+        return currentNumber;
+    }
+
+    public int numberOfNodes() {
+        int currentNumber = 1;
+        if(left != null)
+            currentNumber += left.numberOfNodes();
+        if(right != null)
+            currentNumber += right.numberOfNodes();
+        return currentNumber;
+    }
 }
