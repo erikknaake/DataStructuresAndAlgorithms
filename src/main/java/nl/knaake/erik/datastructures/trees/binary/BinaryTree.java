@@ -1,5 +1,7 @@
 package nl.knaake.erik.datastructures.trees.binary;
 
+import java.util.Objects;
+
 /**
  * Not encapsulated with getters and setters since that will cause too much overhead (in creating stackframes)
  * when creating large trees
@@ -33,5 +35,13 @@ public class BinaryTree<T> {
         return "BinaryTree{" +
                 "root=" + root +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BinaryTree<?> that = (BinaryTree<?>) o;
+        return Objects.equals(root, that.root);
     }
 }

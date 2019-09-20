@@ -1,5 +1,7 @@
 package nl.knaake.erik.datastructures.trees;
 
+import java.util.Objects;
+
 /**
  * Not encapsulated with getters and setters since that will cause too much overhead (in creating stackframes)
  * when creating large trees
@@ -33,4 +35,12 @@ public class Tree<T> {
         return root.numberOfNodes();
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tree<?> tree = (Tree<?>) o;
+        return Objects.equals(root, tree.root);
+    }
 }
