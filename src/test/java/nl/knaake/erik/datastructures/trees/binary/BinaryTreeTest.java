@@ -1,12 +1,13 @@
 package nl.knaake.erik.datastructures.trees.binary;
 
+import nl.knaake.erik.datastructures.trees.Tree;
+import nl.knaake.erik.datastructures.trees.TreeNode;
 import nl.knaake.erik.datastructures.trees.binary.BinaryTree;
 import nl.knaake.erik.datastructures.trees.binary.BinaryTreeNode;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class BinaryTreeTest {
     private BinaryTree<String> tree;
@@ -105,5 +106,52 @@ public class BinaryTreeTest {
     @Test
     public void toStringTest() {
         assertEquals("BinaryTree{root=BinaryTreeNode{value=null, left=null, right=null}}", tree.toString());
+    }
+
+    @Test
+    public void equalToSelf() {
+        assertEquals(tree, tree);
+    }
+
+    @Test
+    public void notEqualToOther() {
+        BinaryTree<String> tree1= new BinaryTree<>("Hello");
+        assertNotEquals(tree1, tree);
+    }
+
+    @Test
+    public void notEqualType() {
+        String str = "";
+        assertNotEquals(str, tree);
+    }
+
+    @Test
+    public void notEqualToNull() {
+        assertNotEquals(null, tree);
+    }
+
+    @Test
+    public void nodeEqualToSelf() {
+        BinaryTreeNode<String> node = new BinaryTreeNode<>("hello");
+        assertEquals(node, node);
+    }
+
+    @Test
+    public void nodeNotEqualToOther() {
+        BinaryTreeNode<String> node = new BinaryTreeNode<>("hello");
+        BinaryTreeNode<String> node1 = new BinaryTreeNode<>("hello2");
+        assertNotEquals(node, node1);
+    }
+
+    @Test
+    public void nodeNotEqualType() {
+        BinaryTreeNode<String> node = new BinaryTreeNode<>("hello");
+        TreeNode<String> node1 = new TreeNode<>("hello");
+        assertNotEquals(node, node1);
+    }
+
+    @Test
+    public void nodeNotEqualToNull() {
+        assertNotEquals(null, new BinaryTreeNode<>("hello"));
     }
 }
