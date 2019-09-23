@@ -2,9 +2,9 @@ package nl.knaake.erik.datastructures.graphs;
 
 import nl.knaake.erik.datastructures.HANQueue;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
+
+import static java.time.chrono.JapaneseEra.values;
 
 public class Graph {
     public final static double INFINITY = Double.POSITIVE_INFINITY;
@@ -85,6 +85,29 @@ public class Graph {
             nodesSeen++;
             v.setEdgeDistances(queue);
         }
+    }
+
+    public boolean isConnectedUndirectional() {
+        Object[] values = vertexMap.values().toArray();
+        if(values.length != 0) {
+            dijkstra(((Vertex) values[0]).getName());
+            for (Object v : values) {
+                if (!((Vertex) v).isScratched())
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isConnectedDirectional() {
+        Object[] values = vertexMap.values().toArray();
+        for(Object v : values) {
+            dijkstra(((Vertex)v).getName());
+            for(Object vectortoCheck : values)
+                if(!((Vertex)vectortoCheck).isScratched())
+                    return false;
+        }
+        return true;
     }
 
     @Override

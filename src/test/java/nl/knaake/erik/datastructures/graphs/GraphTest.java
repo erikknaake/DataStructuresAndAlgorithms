@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class GraphTest {
     private Graph graph;
@@ -43,11 +44,30 @@ public class GraphTest {
     }
 
     @Test
+    public void unweightedMultiCallsDirectConnection() {
+        graph.addEdge("Amsterdam", "Den Haag", 1.2);
+        graph.unweighted("Amsterdam");
+        graph.unweighted("Den Haag");
+
+        assertEquals("Den Haag isDistance: 0.0 to Rotterdam isDistance: 1.0", graph.pathToString("Rotterdam"));
+    }
+
+
+    @Test
     public void dijkstraDirectConnection() {
         graph.addEdge("Amsterdam", "Den Haag", 1.2);
         graph.dijkstra("Amsterdam");
 
         assertEquals("Amsterdam isDistance: 0.0 to Den Haag isDistance: 1.2", graph.pathToString("Den Haag"));
+    }
+
+    @Test
+    public void dijkstraMultiCallsDirectConnection() {
+        graph.addEdge("Amsterdam", "Den Haag", 1.2);
+        graph.dijkstra("Amsterdam");
+        graph.dijkstra("Den Haag");
+
+        assertEquals("Den Haag isDistance: 0.0 to Rotterdam isDistance: 1.0", graph.pathToString("Rotterdam"));
     }
 
     @Test
@@ -106,6 +126,68 @@ public class GraphTest {
         graph.dijkstra("C");
         assertEquals("C isDistance: 0.0 to A isDistance: 1.0", graph.pathToString("A"));
     }
+
+    @Test
+    public void onlyConnectedInOneDirectionDirectional() {
+        assertFalse(graph.isConnectedDirectional());
+    }
+
+    @Test
+    public void connectedBothDirectionsDirectional() {
+        graph.addEdge("Haarlem", "Amsterdam", 1);
+        graph.addEdge("Den Haag", "Haarlem", 1);
+
+        graph.addEdge("Rotterdam", "Amsterdam", 3);
+        graph.addEdge("Rotterdam","Den Haag", 1);
+
+        assertTrue(graph.isConnectedDirectional());
+    }
+
+    @Test
+    public void onlyConnectedInOneDirectionUndirectional() {
+        assertFalse(graph.isConnectedUndirectional());
+    }
+
+    @Test
+    public void connectedBothDirectionsUndirectional() {
+        graph.addEdge("Haarlem", "Amsterdam", 1);
+        graph.addEdge("Den Haag", "Haarlem", 1);
+
+        graph.addEdge("Rotterdam", "Amsterdam", 3);
+        graph.addEdge("Rotterdam","Den Haag", 1);
+        assertTrue(graph.isConnectedUndirectional());
+    }
+
+    @Test
+    public void connectedEmptyDirectional() {
+        graph = new Graph();
+        assertTrue(graph.isConnectedDirectional());
+    }
+
+    @Test
+    public void connectedEmptyUndirectional() {
+        graph = new Graph();
+        assertTrue(graph.isConnectedUndirectional());
+    }
+
+    @Test
+    public void compareEqualPaths() {
+        Vertex v = new Vertex("A");
+        assertEquals(0, new Path(v, 1).compareTo(new Path(v, 1)));
+    }
+
+    @Test
+    public void comparePathsUnequalCostSmaller() {
+        Vertex v = new Vertex("A");
+        assertEquals(-1, new Path(v, 1).compareTo(new Path(v, 2)));
+    }
+
+    @Test
+    public void comparePathsUnequalCostGreater() {
+        Vertex v = new Vertex("A");
+        assertEquals(1, new Path(v, 2).compareTo(new Path(v, 1)));
+    }
+
 
     @Test
     public void toStringTest() {
