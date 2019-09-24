@@ -1,4 +1,4 @@
-# DataStructures
+# DataStructures and Sorting Algorithms
 
 Code that implements several datastructures lectured in the course APP. 
 This code includes all homework assignments that are required for the practical test.
