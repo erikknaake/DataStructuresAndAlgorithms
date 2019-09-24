@@ -1,4 +1,4 @@
-package nl.knaake.erik.datastructures.trees.binary.search;
+package nl.knaake.erik.datastructures.trees.binary;
 
 public class BinarySearchTree<T extends Comparable<? super T>> {
 
@@ -22,36 +22,18 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         }
 
         BinarySearchNode findMin(BinarySearchNode node) {
-            if(node != null) {
-                if(node.left != null)
-                    findMin(node.left);
-                else
-                    return node;
-            }
-            return null;
+            if(node.left != null)
+                return findMin(node.left);
+            else
+                return node;
         }
 
         BinarySearchNode findMax(BinarySearchNode node) {
-            if(node != null) {
-                if(node.right != null)
-                    findMin(node.right);
-                else
-                    return node;
-            }
-            return null;
+            if(node.right != null)
+                return findMax(node.right);
+            else
+                return node;
         }
-
-//        BinarySearchNode find(T value, BinarySearchNode node) {
-//            if(node == null)
-//                return null;
-//            int compareResult = value.compareTo(node.value);
-//            if(compareResult == 0)
-//                return node;
-//            else if(compareResult < 0)
-//                return find(value, node.left);
-//            else
-//                return find(value, node.right);
-//        }
 
         BinarySearchNode removeMin(BinarySearchNode node) {
             if(node.left != null) {
@@ -59,6 +41,14 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
                 return node;
             }
             return node.right;
+        }
+
+        BinarySearchNode removeMax(BinarySearchNode node) {
+            if(node.right != null) {
+                node.right = removeMax(node.right);
+                return node;
+            }
+            return node.left;
         }
 
         BinarySearchNode remove(T value, BinarySearchNode node) {
@@ -73,9 +63,22 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
                 node = (node.left != null) ? node.left : node.right;
             return node;
         }
+
+        @Override
+        public String toString() {
+            return "BinarySearchNode{" +
+                    "left=" + left +
+                    ", right=" + right +
+                    ", value=" + value +
+                    '}';
+        }
     }
 
     private BinarySearchNode root;
+
+    public BinarySearchTree(T value) {
+        root = new BinarySearchNode(value);
+    }
 
     public void insert(T value) {
         root = root.insert(value, root);
@@ -86,10 +89,31 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     }
 
     public T findMin() {
-        return root.findMin(root).value;
+        if(root == null)
+            return null;
+        BinarySearchNode node = root.findMin(root);
+        return node == null ? null : node.value;
     }
 
     public T findMax() {
-        return root.findMax(root).value;
+        if(root == null)
+            return null;
+        BinarySearchNode node = root.findMax(root);
+        return node == null ? null : node.value;
+    }
+
+    public void removeMin() {
+        root = root.removeMin(root);
+    }
+
+    public void removeMax() {
+        root = root.removeMax(root);
+    }
+
+    @Override
+    public String toString() {
+        return "BinarySearchTree{" +
+                "root=" + root +
+                '}';
     }
 }
