@@ -1,6 +1,10 @@
-package nl.knaake.erik.datastructures.trees.binary;
+package nl.knaake.erik.datastructures.trees.binary.calculator;
 
+import nl.knaake.erik.datastructures.trees.binary.BinaryTree;
+import nl.knaake.erik.datastructures.trees.binary.BinaryTreeNode;
+import nl.knaake.erik.datastructures.trees.binary.IApplyBinaryTree;
 import org.jetbrains.annotations.NotNull;
+
 
 public class TreeCalculator implements IApplyBinaryTree<String, Integer> {
     @Override
@@ -21,8 +25,11 @@ public class TreeCalculator implements IApplyBinaryTree<String, Integer> {
                 return apply(node.left) - apply(node.right);
             case "+":
                 return apply(node.left) + apply(node.right);
-            default:
-                return Integer.valueOf(node.value);
+        }
+        if(node.value.matches("-?\\d+")) {
+            return Integer.valueOf(node.value);
+        } else {
+            throw new CalculatorException(node.value + " is not a valid string in this expression");
         }
     }
 }

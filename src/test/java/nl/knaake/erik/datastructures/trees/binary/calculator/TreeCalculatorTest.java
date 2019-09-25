@@ -1,5 +1,7 @@
-package nl.knaake.erik.datastructures.trees.binary;
+package nl.knaake.erik.datastructures.trees.binary.calculator;
 
+import nl.knaake.erik.datastructures.trees.binary.BinaryTree;
+import nl.knaake.erik.datastructures.trees.binary.IApplyBinaryTree;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -97,5 +99,38 @@ public class TreeCalculatorTest {
     public void valueLiteralTree() {
         tree.root.value = "6";
         assertEquals(Integer.valueOf(6), calculator.apply(tree));
+    }
+
+    @Test(expected = CalculatorException.class)
+    public void unparseable() {
+        tree.root.value = "a";
+        calculator.apply(tree);
+        try {
+            calculator.apply(tree);
+        } catch (CalculatorException e) {
+            assertEquals("a is not a valid string in this expression", e.getMessage());
+            throw e;
+        }
+    }
+
+    @Test(expected = CalculatorException.class)
+    public void devideByUnparseable() {
+        tree.root.value = "/";
+        tree.root.setLeft("2");
+        tree.root.setRight("a");
+        try {
+            calculator.apply(tree);
+        } catch (CalculatorException e) {
+            assertEquals("a is not a valid string in this expression", e.getMessage());
+            throw e;
+        }
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void expressionWithMissingOperand() {
+        tree.root.value = "/";
+        tree.root.setLeft("2");
+        // right intentionally left empty
+        calculator.apply(tree);
     }
 }
