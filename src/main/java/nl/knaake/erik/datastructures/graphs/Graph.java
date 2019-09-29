@@ -2,9 +2,9 @@ package nl.knaake.erik.datastructures.graphs;
 
 import nl.knaake.erik.datastructures.HANQueue;
 
-import java.util.*;
-
-import static java.time.chrono.JapaneseEra.values;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class Graph {
     public final static double INFINITY = Double.POSITIVE_INFINITY;
@@ -103,11 +103,15 @@ public class Graph {
         Object[] values = vertexMap.values().toArray();
         for(Object v : values) {
             dijkstra(((Vertex)v).getName());
-            for(Object vectortoCheck : values)
-                if(!((Vertex)vectortoCheck).isScratched())
+            for(Object vectorToCheck : values)
+                if(!((Vertex)vectorToCheck).isScratched())
                     return false;
         }
         return true;
+    }
+
+    public GraphMatrix toMatrixRep() {
+        return GraphMatrix.fromVertices(vertexMap.values());
     }
 
     @Override

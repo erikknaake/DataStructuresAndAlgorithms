@@ -151,6 +151,34 @@ public class BinarySearchTreeTest {
     }
 
     @Test
+    public void fromSortedArray() {
+        Integer[] array = {1, 3, 8, 10, 19, 22, 32};
+
+        tree = new BinarySearchTree<>(10);
+        tree.insert(3);
+        tree.insert(1);
+        tree.insert(8);
+        tree.insert(22);
+        tree.insert(19);
+        tree.insert(32);
+        assertEquals(tree, BinarySearchTree.fromSortedArray(array));
+    }
+
+    @Test
+    public void fromArray() {
+        Integer[] array = {1, 10, 22, 3, 19, 8, 32};
+
+        tree = new BinarySearchTree<>(10);
+        tree.insert(3);
+        tree.insert(1);
+        tree.insert(8);
+        tree.insert(22);
+        tree.insert(19);
+        tree.insert(32);
+        assertEquals(tree, BinarySearchTree.fromArray(array));
+    }
+
+    @Test
     public void toStringTest() {
         assertEquals("BinarySearchTree{root=BinarySearchNode{left=null, right=null, value=4}}", tree.toString());
     }

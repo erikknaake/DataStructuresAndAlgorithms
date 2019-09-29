@@ -126,7 +126,7 @@ public class TreeCalculatorTest {
         }
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void expressionWithMissingOperand() {
         tree.root.value = "/";
         tree.root.setLeft("2");

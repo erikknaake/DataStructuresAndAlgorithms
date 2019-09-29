@@ -57,6 +57,10 @@ public class HANLinkedList<T> {
         return size;
     }
 
+    public ListNode<T> getHeader() {
+        return header;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("LinkedList:\n");

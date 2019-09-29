@@ -3,9 +3,11 @@ package nl.knaake.erik.datastructures.graphs;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class GraphTest {
     private Graph graph;
@@ -188,6 +190,49 @@ public class GraphTest {
         assertEquals(1, new Path(v, 2).compareTo(new Path(v, 1)));
     }
 
+    @Test
+    public void toGraphMatrix() {
+       Double[][] matrix = {
+               {null, 3d, 2d, null, null, null},
+               {null, null, null, null, null, null},
+               {null, null, null, null, null, 2d},
+               {null, 1d, null, null, 8d, null},
+               {null, null, null, null, null, null},
+               {null, null, null, 4d, null, null}
+       };
+
+        graph = new Graph();
+        graph.addEdge("A", "C", 2);
+        graph.addEdge("C", "F", 2);
+        graph.addEdge("F", "D", 4);
+        graph.addEdge("D", "E", 8);
+        graph.addEdge("D", "B", 1);
+        graph.addEdge("A", "B", 3);
+
+        assertArrayEquals(matrix, graph.toMatrixRep().getMatrix());
+    }
+
+    @Test
+    public void undirectionalConnected() {
+
+        graph = new Graph();
+        graph.addEdge("A", "C", 2);
+        graph.addEdge("C", "F", 2);
+        graph.addEdge("F", "D", 4);
+        graph.addEdge("D", "E", 8);
+        graph.addEdge("D", "B", 1);
+        graph.addEdge("A", "B", 3);
+
+        assertTrue(graph.toMatrixRep().isUndirectedConnected());
+    }
+
+    @Test
+    public void undirectionalNotConnected() {
+        GraphMatrix graphMatrix = new GraphMatrix(3);
+        Double[][] matrix = {{1d, null, null}, {null, null, null}, {null, null, 3d}};
+        graphMatrix.setMatrix(matrix);
+        assertFalse(graphMatrix.isUndirectedConnected());
+    }
 
     @Test
     public void toStringTest() {

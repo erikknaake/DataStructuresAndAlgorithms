@@ -82,6 +82,10 @@ public class Vertex {
         }
     }
 
+    public HANLinkedList<Edge> getAdjecent() {
+        return adjecent;
+    }
+
     @Override
     public String toString() {
         return "Vertex{" +
