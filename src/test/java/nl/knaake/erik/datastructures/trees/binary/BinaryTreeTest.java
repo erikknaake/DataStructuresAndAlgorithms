@@ -1,20 +1,33 @@
 package nl.knaake.erik.datastructures.trees.binary;
 
-import nl.knaake.erik.datastructures.trees.Tree;
 import nl.knaake.erik.datastructures.trees.TreeNode;
-import nl.knaake.erik.datastructures.trees.binary.BinaryTree;
-import nl.knaake.erik.datastructures.trees.binary.BinaryTreeNode;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
 public class BinaryTreeTest {
     private BinaryTree<String> tree;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
 
     @Before
     public void before() {
         tree = new BinaryTree<>();
+    }
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
     }
 
     @Test
@@ -153,5 +166,15 @@ public class BinaryTreeTest {
     @Test
     public void nodeNotEqualToNull() {
         assertNotEquals(null, new BinaryTreeNode<>("hello"));
+    }
+
+    @Test
+    public void printPostOrder() {
+        tree.root.setLeft("Hello");
+        tree.root.setRight("Hello2");
+        tree.printPostOrder();
+        assertEquals("Hello\n" +
+                "Hello2\n" +
+                "null\n", outContent.toString());
     }
 }

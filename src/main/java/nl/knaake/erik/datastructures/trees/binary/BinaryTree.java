@@ -44,4 +44,8 @@ public class BinaryTree<T> {
         BinaryTree<?> that = (BinaryTree<?>) o;
         return Objects.equals(root, that.root);
     }
+
+    public void printPostOrder() {
+        BinaryTreeNode.printPostOrder(root);
+    }
 }

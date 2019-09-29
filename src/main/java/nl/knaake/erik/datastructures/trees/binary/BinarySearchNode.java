@@ -67,6 +67,15 @@ public class BinarySearchNode<T extends Comparable<? super T>> {
         return node;
     }
 
+    public static <T extends Comparable<? super T>> void printPostOrder(BinarySearchNode<T> node) {
+        if(node.left != null)
+            printPostOrder(node.left);
+        if(node.right != null)
+            printPostOrder(node.right);
+        System.out.println(node.value);
+    }
+
+
     @Override
     public String toString() {
         return "BinarySearchNode{" +

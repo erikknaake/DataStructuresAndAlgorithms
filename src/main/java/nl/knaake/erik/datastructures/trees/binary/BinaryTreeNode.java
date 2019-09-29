@@ -64,6 +64,14 @@ public class BinaryTreeNode<T> {
         return currentNumber;
     }
 
+    public static <T> void printPostOrder(BinaryTreeNode<T> node) {
+        if(node.left != null)
+            printPostOrder(node.left);
+        if(node.right != null)
+            printPostOrder(node.right);
+        System.out.println(node.value);
+    }
+
     @Override
     public String toString() {
         return "BinaryTreeNode{" +

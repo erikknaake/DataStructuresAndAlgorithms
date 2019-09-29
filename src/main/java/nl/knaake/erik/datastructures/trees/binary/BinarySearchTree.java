@@ -76,6 +76,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return root;
     }
 
+    public void printPostOrder() {
+        BinarySearchNode.printPostOrder(root);
+    }
+
     @Override
     public String toString() {
         return "BinarySearchTree{" +

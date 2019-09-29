@@ -1,17 +1,33 @@
 package nl.knaake.erik.datastructures.trees.binary;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 public class BinarySearchTreeTest {
     private BinarySearchTree<Integer> tree;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
 
     @Before
     public void before() {
         tree = new BinarySearchTree<>(4);
+    }
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
     }
 
     @Test
@@ -181,5 +197,15 @@ public class BinarySearchTreeTest {
     @Test
     public void toStringTest() {
         assertEquals("BinarySearchTree{root=BinarySearchNode{left=null, right=null, value=4}}", tree.toString());
+    }
+
+    @Test
+    public void printPostOrder() {
+        tree.insert(2);
+        tree.insert(5);
+        tree.printPostOrder();
+        assertEquals("2\n" +
+                "5\n" +
+                "4\n", outContent.toString());
     }
 }
